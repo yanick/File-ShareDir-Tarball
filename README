@@ -1,0 +1,32 @@
+NAME
+    File::ShareDir::Tarball - Deal transparently with shared files
+    distributed as tarballs
+
+VERSION
+    version 0.1.0
+
+SYNOPSIS
+        use File::ShareDir::Tarball ':ALL';
+
+        # use exactly like File::ShareDir
+        $dir = dist_dir('File-ShareDir');
+
+DESCRIPTION
+    If the shared files of a distribution are contained in a tarball (see
+    Dist::Zilla::Plugin::ShareDir::Tarball for why you would want to do
+    that), automatically extract the archive in a temporary directory and
+    return the path to that directory. In other words, from the consumer
+    point of view, it'll behave just like File::ShareDir.
+
+    NOTE: for now, only "dist_dir()" is supported. The other functions will
+    soon come.
+
+AUTHOR
+    Yanick Champoux <yanick@babyl.dyndns.org>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2012 by Yanick Champoux.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+

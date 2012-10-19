@@ -1,0 +1,39 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.68.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 990b283690bf2305e6e6f18f685977e97aa732e6 AUTHOR_PLEDGE
+SHA1 76587b3f6528c2d8990937abd055757e7cb100dd Build.PL
+SHA1 996b2b418ed04d4a6d40d665d564f19529e8fdd5 Changes
+SHA1 edcd2f28ea759ae7f3a02802f883fdd0c9895234 INSTALL
+SHA1 42a9b278ca94a31df654fec186efe74ba9565d7e LICENSE
+SHA1 0fedd40bcc187d851d23a4c9015e1ab573cba551 MANIFEST
+SHA1 74f9f08940138e0c670904684e5b52c3c2805e0c META.json
+SHA1 20ef62b9e3919fe1330135316ea89d7f0c2fabfd META.yml
+SHA1 1b97affba9bc98b86a48e2996348ca8d44fe4131 README
+SHA1 a0e19e3d77964f1a483bd44106581ce809fd51c9 README.mkdn
+SHA1 9c33c75746b8f6c04bb4d890f5496df23f81eb78 lib/File/ShareDir/Tarball.pm
+SHA1 3cbe905b92fbc69d59a06031d5ce6c837b352aa2 t/00-compile.t
+SHA1 473906254ecd96009795d4b7fbc82fac48c03ecd t/000-report-versions.t
+SHA1 a51d6636731e4c88dbbed27ad4cd808f2b101fcd t/basic.t
+SHA1 93189390c823cda5b90448e6b477aee39da35322 t/share/shared-files.tar.gz
+SHA1 ec3f84bfd7a9ce3246e7592f4134100c6b5ce02b xt/release/unused-vars.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.11 (GNU/Linux)
+
+iEYEARECAAYFAlCArEsACgkQ34Hwf+GwC4wEHwCgl6Vc/oc4JrJljbTYwex1D38e
+Xq8An1Rfv4iDoGKM1iK8fdpum9wTccaM
+=ozVL
+-----END PGP SIGNATURE-----

@@ -1,5 +1,8 @@
 Revision history for File-ShareDir-Tarball
 
-{{$NEXT}}
+0.1.0 2012-10-18
+ - First version, unleashed on an unsuspecting world.
 
-  - First version, unleashed on an unsuspecting world.
+ [STATISTICS]
+ - code churn: 2 files changed, 18 insertions(+), 1 deletion(-)
+
