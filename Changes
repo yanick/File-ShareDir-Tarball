@@ -1,8 +1,13 @@
 Revision history for File-ShareDir-Tarball
 
-0.1.0 2012-10-18
- - First version, unleashed on an unsuspecting world.
+0.2.0 2012-10-20
+ [NEW FEATURES]
+ - Extracted directories are cached within the life of an application.
+ - Add the function 'dist_file'.
 
  [STATISTICS]
- - code churn: 2 files changed, 18 insertions(+), 1 deletion(-)
+ - code churn: 5 files changed, 104 insertions(+), 14 deletions(-)
+
+0.1.0 2012-10-18
+ - First version, unleashed on an unsuspecting world.
 

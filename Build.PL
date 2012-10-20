@@ -22,7 +22,7 @@ my %module_build_args = (
     "Yanick Champoux <yanick\@babyl.dyndns.org>"
   ],
   "dist_name" => "File-ShareDir-Tarball",
-  "dist_version" => "0.1.0",
+  "dist_version" => "0.2.0",
   "license" => "perl",
   "module_name" => "File::ShareDir::Tarball",
   "recommends" => {},

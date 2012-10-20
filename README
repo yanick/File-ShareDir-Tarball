@@ -3,10 +3,10 @@ NAME
     distributed as tarballs
 
 VERSION
-    version 0.1.0
+    version 0.2.0
 
 SYNOPSIS
-        use File::ShareDir::Tarball ':ALL';
+        use File::ShareDir::Tarball ':all';
 
         # use exactly like File::ShareDir
         $dir = dist_dir('File-ShareDir');
@@ -15,11 +15,25 @@ DESCRIPTION
     If the shared files of a distribution are contained in a tarball (see
     Dist::Zilla::Plugin::ShareDir::Tarball for why you would want to do
     that), automatically extract the archive in a temporary directory and
-    return the path to that directory. In other words, from the consumer
-    point of view, it'll behave just like File::ShareDir.
+    return the path to that directory. If called for a regular distribution
+    without a bundle file ("shared-files.tar.gz"), it'll return the original
+    shared dir. In other words, from the consumer point of view, it'll
+    behave just like File::ShareDir.
 
-    NOTE: for now, only "dist_dir()" is supported. The other functions will
-    soon come.
+EXPORT TAGS
+  :all
+    Exports "dist_dir()" and "dist_file()".
+
+EXPORTABLE FUNCTIONS
+  dist_dir( $distribution )
+    Behaves just like "dist_dir()" from File::ShareDir.
+
+  dist_file( $distribution, $file )
+    Behaves just like "dist_file()" from File::ShareDir.
+
+SEE ALSO
+    Test::File::ShareDir
+        To test or use a shared dir that is not deployed yet.
 
 AUTHOR
     Yanick Champoux <yanick@babyl.dyndns.org>
