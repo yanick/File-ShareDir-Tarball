@@ -3,7 +3,7 @@ package File::ShareDir::Tarball;
 
 =head1 SYNOPSIS
 
-    use File::ShareDir::Tarball ':ALL';
+    use File::ShareDir::Tarball ':all';
 
     # use exactly like File::ShareDir
     $dir = dist_dir('File-ShareDir');
@@ -14,11 +14,26 @@ If the shared files of a distribution are contained in a
 tarball (see L<Dist::Zilla::Plugin::ShareDir::Tarball> for
 why you would want to do that), automatically 
 extract the archive in a temporary
-directory and return the path to that directory. In other words,
+directory and return the path to that directory. If called for a regular distribution without a bundle file
+(C<shared-files.tar.gz>), it'll return the original shared dir. 
+In other words,
 from the consumer point of view, it'll behave just like L<File::ShareDir>.
 
-NOTE: for now, only C<dist_dir()> is supported. The other functions will soon
-come.
+=head1 EXPORT TAGS
+
+=head2 :all
+
+Exports C<dist_dir()> and C<dist_file()>.
+
+=head1 EXPORTABLE FUNCTIONS
+
+=head2 dist_dir( $distribution )
+
+Behaves just like C<dist_dir()> from L<File::ShareDir>.
+
+=head2 dist_file( $distribution, $file )
+
+Behaves just like C<dist_file()> from L<File::ShareDir>.
 
 =cut
 
@@ -35,18 +50,27 @@ use File::Temp qw/ tempdir /;
 use File::chdir;
 
 our @EXPORT_OK   = qw{
-    dist_dir
+    dist_dir dist_file
 };
 our %EXPORT_TAGS = (
-    ALL => [ @EXPORT_OK ],
+    all => [ @EXPORT_OK ],
 );
 
 my $shared_files_tarball = 'shared-files.tar.gz';
 
-sub dist_dir {
-    my $dir = File::ShareDir::dist_dir(@_);
+# we don't want to extract the same dirs again and 
+# again within a single program
+my %DIR_CACHE;
 
-    croak "archive '$shared_files_tarball' not found in $dir"
+sub dist_dir {
+    my $dist = shift;
+
+    return $DIR_CACHE{$dist} if $DIR_CACHE{$dist};
+
+    my $dir = File::ShareDir::dist_dir($dist);
+
+    # no tarball? Assume regular shared dir
+    return $DIR_CACHE{$dist} = $dir 
         unless -f "$dir/$shared_files_tarball";
 
     my $archive = Archive::Tar->new;
@@ -61,7 +85,36 @@ sub dist_dir {
 
     $archive->extract;
 
-    return $tmpdir;
+    return $DIR_CACHE{$dist} = $tmpdir;
 }
+
+sub dist_file {
+    my $dist = File::ShareDir::_DIST(shift);
+    my $file = File::ShareDir::_FILE(shift);
+
+    my $path = dist_dir($dist).'/'.$file;
+
+	return undef unless -e $path;
+
+    croak("Found dist_file '$path', but not a file") 
+        unless -f $path;
+
+    croak("File '$path', no read permissions") 
+        unless -r $path;
+
+	return $path;
+}
+
+=head1 SEE ALSO
+
+=over
+
+=item L<Test::File::ShareDir>
+
+To test or use a shared dir that is not deployed yet. 
+
+=back
+
+=cut
 
 1;
