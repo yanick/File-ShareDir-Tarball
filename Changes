@@ -1,21 +1,23 @@
 Revision history for File-ShareDir-Tarball
 
 {{$NEXT}}
-
-0.2.0     2012-10-20
  [API CHANGES]
 
  [BUG FIXES]
 
  [DOCUMENTATION]
+ - Add mention to Module::Build::CleanInstall
 
  [ENHANCEMENTS]
 
  [NEW FEATURES]
-  - Extracted directories are cached within the life of an application.
-  - Add the function 'dist_file'.
 
  [STATISTICS]
+
+0.2.0 2012-10-20
+ [NEW FEATURES]
+ - Extracted directories are cached within the life of an application.
+ - Add the function 'dist_file'.
 
 0.1.0 2012-10-18
 

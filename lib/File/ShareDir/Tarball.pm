@@ -113,6 +113,16 @@ sub dist_file {
 
 To test or use a shared dir that is not deployed yet. 
 
+=item L<Dist::Zilla::Plugin::ShareDir::Tarball>
+
+L<Dist::Zilla> plugin to create the tarball effortlessly.
+
+=item L<Module::Build::CleanInstall>
+
+Provides an alternative to this module by subclassing L<Module::Build> and,
+upon installation, remove the files from previous installations as given in
+the I<packlist>.
+
 =back
 
 =cut
