@@ -1,41 +1,12 @@
 package File::ShareDir::Tarball;
+BEGIN {
+  $File::ShareDir::Tarball::AUTHORITY = 'cpan:YANICK';
+}
+{
+  $File::ShareDir::Tarball::VERSION = '0.2.1';
+}
 # ABSTRACT: Deal transparently with shared files distributed as tarballs
 
-=head1 SYNOPSIS
-
-    use File::ShareDir::Tarball ':all';
-
-    # use exactly like File::ShareDir
-    $dir = dist_dir('File-ShareDir');
-
-=head1 DESCRIPTION
-
-If the shared files of a distribution are contained in a
-tarball (see L<Dist::Zilla::Plugin::ShareDir::Tarball> for
-why you would want to do that), automatically 
-extract the archive in a temporary
-directory and return the path to that directory. If called for a regular distribution without a bundle file
-(C<shared-files.tar.gz>), it'll return the original shared dir. 
-In other words,
-from the consumer point of view, it'll behave just like L<File::ShareDir>.
-
-=head1 EXPORT TAGS
-
-=head2 :all
-
-Exports C<dist_dir()> and C<dist_file()>.
-
-=head1 EXPORTABLE FUNCTIONS
-
-=head2 dist_dir( $distribution )
-
-Behaves just like C<dist_dir()> from L<File::ShareDir>.
-
-=head2 dist_file( $distribution, $file )
-
-Behaves just like C<dist_file()> from L<File::ShareDir>.
-
-=cut
 
 use strict;
 use warnings;
@@ -105,6 +76,55 @@ sub dist_file {
 	return $path;
 }
 
+
+1;
+
+__END__
+
+=pod
+
+=head1 NAME
+
+File::ShareDir::Tarball - Deal transparently with shared files distributed as tarballs
+
+=head1 VERSION
+
+version 0.2.1
+
+=head1 SYNOPSIS
+
+    use File::ShareDir::Tarball ':all';
+
+    # use exactly like File::ShareDir
+    $dir = dist_dir('File-ShareDir');
+
+=head1 DESCRIPTION
+
+If the shared files of a distribution are contained in a
+tarball (see L<Dist::Zilla::Plugin::ShareDir::Tarball> for
+why you would want to do that), automatically 
+extract the archive in a temporary
+directory and return the path to that directory. If called for a regular distribution without a bundle file
+(C<shared-files.tar.gz>), it'll return the original shared dir. 
+In other words,
+from the consumer point of view, it'll behave just like L<File::ShareDir>.
+
+=head1 EXPORT TAGS
+
+=head2 :all
+
+Exports C<dist_dir()> and C<dist_file()>.
+
+=head1 EXPORTABLE FUNCTIONS
+
+=head2 dist_dir( $distribution )
+
+Behaves just like C<dist_dir()> from L<File::ShareDir>.
+
+=head2 dist_file( $distribution, $file )
+
+Behaves just like C<dist_file()> from L<File::ShareDir>.
+
 =head1 SEE ALSO
 
 =over
@@ -125,6 +145,15 @@ the I<packlist>.
 
 =back
 
-=cut
+=head1 AUTHOR
 
-1;
+Yanick Champoux <yanick@babyl.dyndns.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2012 by Yanick Champoux.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut

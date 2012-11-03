@@ -1,18 +1,11 @@
 Revision history for File-ShareDir-Tarball
 
-{{$NEXT}}
- [API CHANGES]
-
- [BUG FIXES]
-
+0.2.1 2012-11-03
  [DOCUMENTATION]
  - Add mention to Module::Build::CleanInstall
 
- [ENHANCEMENTS]
-
- [NEW FEATURES]
-
  [STATISTICS]
+ - code churn: 5 files changed, 118 insertions(+), 14 deletions(-)
 
 0.2.0 2012-10-20
  [NEW FEATURES]
@@ -20,5 +13,5 @@ Revision history for File-ShareDir-Tarball
  - Add the function 'dist_file'.
 
 0.1.0 2012-10-18
+ - First version, unleashed on an unsuspecting world.
 
-  - First version, unleashed on an unsuspecting world.
