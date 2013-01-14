@@ -3,7 +3,7 @@ use warnings;
 
 use Test::More tests => 4;
 
-use Test::File::ShareDir
+use Test::File::ShareDir 0.3.0
     -share => {
         -dist   => { 
             'My-Dist'       => 't/share',
