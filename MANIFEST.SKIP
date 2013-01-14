@@ -1,7 +1,0 @@
-^dist.ini
-^MANIFEST.SKIP
-File-ShareDir-Tarball.*
-^\.gitignore
-^\.git
-^\.build
-
