@@ -12,10 +12,10 @@ package File::ShareDir::Tarball;
 
 If the shared files of a distribution are contained in a
 tarball (see L<Dist::Zilla::Plugin::ShareDir::Tarball> for
-why you would want to do that), automatically 
+why you would want to do that), automatically
 extract the archive in a temporary
 directory and return the path to that directory. If called for a regular distribution without a bundle file
-(C<shared-files.tar.gz>), it'll return the original shared dir. 
+(C<shared-files.tar.gz>), it'll return the original shared dir.
 In other words,
 from the consumer point of view, it'll behave just like L<File::ShareDir>.
 
@@ -48,6 +48,7 @@ use File::ShareDir;
 use Archive::Tar;
 use File::Temp qw/ tempdir /;
 use File::chdir;
+use Memoize;
 
 our @EXPORT_OK   = qw{
     dist_dir dist_file
@@ -58,20 +59,17 @@ our %EXPORT_TAGS = (
 
 my $shared_files_tarball = 'shared-files.tar.gz';
 
-# we don't want to extract the same dirs again and 
+# we don't want to extract the same dirs again and
 # again within a single program
-my %DIR_CACHE;
+memoize('dist_dir');
 
 sub dist_dir {
     my $dist = shift;
 
-    return $DIR_CACHE{$dist} if $DIR_CACHE{$dist};
-
     my $dir = File::ShareDir::dist_dir($dist);
 
     # no tarball? Assume regular shared dir
-    return $DIR_CACHE{$dist} = $dir 
-        unless -f "$dir/$shared_files_tarball";
+    return $dir unless -f "$dir/$shared_files_tarball";
 
     my $archive = Archive::Tar->new;
     $archive->read("$dir/$shared_files_tarball");
@@ -85,7 +83,7 @@ sub dist_dir {
 
     $archive->extract;
 
-    return $DIR_CACHE{$dist} = $tmpdir;
+    return $tmpdir;
 }
 
 sub dist_file {
@@ -96,10 +94,10 @@ sub dist_file {
 
 	return undef unless -e $path;
 
-    croak("Found dist_file '$path', but not a file") 
+    croak("Found dist_file '$path', but not a file")
         unless -f $path;
 
-    croak("File '$path', no read permissions") 
+    croak("File '$path', no read permissions")
         unless -r $path;
 
 	return $path;
@@ -111,7 +109,7 @@ sub dist_file {
 
 =item L<Test::File::ShareDir>
 
-To test or use a shared dir that is not deployed yet. 
+To test or use a shared dir that is not deployed yet.
 
 =item L<Dist::Zilla::Plugin::ShareDir::Tarball>
 

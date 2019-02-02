@@ -1,11 +1,11 @@
 use strict;
 use warnings;
 
-use Test::More tests => 4;
+use Test::More tests => 5;
 
 use Test::File::ShareDir 0.3.0
     -share => {
-        -dist   => { 
+        -dist   => {
             'My-Dist'       => 't/share',
             'My-Other-Dist' => 't/share_non_bundle',
         }
@@ -13,7 +13,23 @@ use Test::File::ShareDir 0.3.0
 
 use File::ShareDir::Tarball qw/ dist_dir /;
 
+# to check if memoization works
+my $times_run = 0;
+{
+    no warnings 'redefine';
+    sub Archive::Tar::list_files { $times_run++; return () }
+}
+
 my $dir = dist_dir('My-Dist');
+
+subtest 'memoization' => sub {
+
+    is $times_run => 1, 'first read, no memoization';
+
+    dist_dir('My-Dist');
+
+    is $times_run => 1, 'second read, memoization';
+};
 
 ok -f "$dir/foo", 'foo';
 ok -f "$dir/bar", 'bar';
