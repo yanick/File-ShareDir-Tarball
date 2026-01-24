@@ -2,6 +2,10 @@ Revision history for File-ShareDir-Tarball
 
 {{$NEXT}}
 
+ [ENHANCEMENTS]
+ - Use module Memoize for memoization instead of homegrown code.
+ - Move to Test2::V0 for the tests.
+
 0.2.2     2013-01-13
  [API CHANGES]
 
