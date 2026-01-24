@@ -92,7 +92,7 @@ sub dist_file {
 
     my $path = dist_dir($dist).'/'.$file;
 
-	return undef unless -e $path;
+    return undef unless -e $path;
 
     croak("Found dist_file '$path', but not a file")
         unless -f $path;
@@ -100,7 +100,7 @@ sub dist_file {
     croak("File '$path', no read permissions")
         unless -r $path;
 
-	return $path;
+    return $path;
 }
 
 1;
