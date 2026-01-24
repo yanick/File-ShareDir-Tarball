@@ -103,6 +103,10 @@ sub dist_file {
 	return $path;
 }
 
+1;
+
+__END__
+
 =head1 SEE ALSO
 
 =over
@@ -122,7 +126,3 @@ upon installation, remove the files from previous installations as given in
 the I<packlist>.
 
 =back
-
-=cut
-
-1;
