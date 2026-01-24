@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 5;
+use Test2::V0;
 
 use Test::File::ShareDir 0.3.0
     -share => {
@@ -39,3 +39,5 @@ is dist_dir('My-Dist') => $dir, "reuse same directory";
 open my $fh, '<', dist_dir('My-Other-Dist') . '/foo';
 
 is <$fh> => "foo\n", 'no bundle? no problem';
+
+done_testing();
