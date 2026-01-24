@@ -1,12 +1,14 @@
 Revision history for File-ShareDir-Tarball
 
-{{$NEXT}}
-
+0.3.0 2026-01-24
  [ENHANCEMENTS]
  - Use module Memoize for memoization instead of homegrown code.
  - Move to Test2::V0 for the tests.
 
-0.2.2     2013-01-13
+ [STATISTICS]
+ - code churn: 9 files changed, 301 insertions(+), 23 deletions(-)
+
+0.2.2 2013-01-13
  [API CHANGES]
 
  [BUG FIXES]
@@ -31,4 +33,3 @@ Revision history for File-ShareDir-Tarball
 
 0.1.0 2012-10-18
  - First version, unleashed on an unsuspecting world.
-

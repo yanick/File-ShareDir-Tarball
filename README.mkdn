@@ -1,0 +1,70 @@
+# NAME
+
+File::ShareDir::Tarball - Deal transparently with shared files distributed as tarballs
+
+# VERSION
+
+version 0.3.0
+
+# SYNOPSIS
+
+```perl
+use File::ShareDir::Tarball ':all';
+
+# use exactly like File::ShareDir
+$dir = dist_dir('File-ShareDir');
+```
+
+# DESCRIPTION
+
+If the shared files of a distribution are contained in a
+tarball (see [Dist::Zilla::Plugin::ShareDir::Tarball](https://metacpan.org/pod/Dist%3A%3AZilla%3A%3APlugin%3A%3AShareDir%3A%3ATarball) for
+why you would want to do that), automatically
+extract the archive in a temporary
+directory and return the path to that directory. If called for a regular distribution without a bundle file
+(`shared-files.tar.gz`), it'll return the original shared dir.
+In other words,
+from the consumer point of view, it'll behave just like [File::ShareDir](https://metacpan.org/pod/File%3A%3AShareDir).
+
+# EXPORT TAGS
+
+## :all
+
+Exports `dist_dir()` and `dist_file()`.
+
+# EXPORTABLE FUNCTIONS
+
+## dist\_dir( $distribution )
+
+Behaves just like `dist_dir()` from [File::ShareDir](https://metacpan.org/pod/File%3A%3AShareDir).
+
+## dist\_file( $distribution, $file )
+
+Behaves just like `dist_file()` from [File::ShareDir](https://metacpan.org/pod/File%3A%3AShareDir).
+
+# SEE ALSO
+
+- [Test::File::ShareDir](https://metacpan.org/pod/Test%3A%3AFile%3A%3AShareDir)
+
+    To test or use a shared dir that is not deployed yet.
+
+- [Dist::Zilla::Plugin::ShareDir::Tarball](https://metacpan.org/pod/Dist%3A%3AZilla%3A%3APlugin%3A%3AShareDir%3A%3ATarball)
+
+    [Dist::Zilla](https://metacpan.org/pod/Dist%3A%3AZilla) plugin to create the tarball effortlessly.
+
+- [Module::Build::CleanInstall](https://metacpan.org/pod/Module%3A%3ABuild%3A%3ACleanInstall)
+
+    Provides an alternative to this module by subclassing [Module::Build](https://metacpan.org/pod/Module%3A%3ABuild) and,
+    upon installation, remove the files from previous installations as given in
+    the _packlist_.
+
+# AUTHOR
+
+Yanick Champoux <yanick@babyl.dyndns.org> [![endorse](http://api.coderwall.com/yanick/endorsecount.png)](http://coderwall.com/yanick)
+
+# COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2026 by Yanick Champoux.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
